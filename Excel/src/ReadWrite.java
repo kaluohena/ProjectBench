@@ -299,7 +299,7 @@ public class ReadWrite {/**
 		WritableCellFormat floatFormat = new WritableCellFormat ();
 		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 
-		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= C3, 1, 0";
+		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= $C$3, 1, 0";
 		Formula ifMaxFormula = new Formula(21, thisRow, ifMaxFormulaString, floatFormat);
 		sheet1.addCell(ifMaxFormula);
 	}
@@ -310,7 +310,7 @@ public class ReadWrite {/**
 		WritableCellFormat floatFormat = new WritableCellFormat ();
 		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 
-		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= D3, 2, 0";
+		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= $D$3, 2, 0";
 		Formula ifMaxFormula = new Formula(22, thisRow, ifMaxFormulaString, floatFormat);
 		sheet1.addCell(ifMaxFormula);
 	}
@@ -318,11 +318,22 @@ public class ReadWrite {/**
 	//·À²¨µÌ3
 	protected void getPreventWave3(int thisRow, int anchorRow) throws WriteException, RowsExceededException {
 		// Set cell format
-		WritableCellFormat floatFormat = new WritableCellFormat ();
+		WritableCellFormat floatFormat = new WritableCellFormat();
 		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 
-		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= E3, 3, 0";
+		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= $E$3, 3, 0";
 		Formula ifMaxFormula = new Formula(23, thisRow, ifMaxFormulaString, floatFormat);
+		sheet1.addCell(ifMaxFormula);
+	}
+	
+	//·À²¨µÌ4
+	protected void getPreventWave4(int thisRow, int anchorRow) throws WriteException, RowsExceededException {
+		// Set cell format
+		WritableCellFormat floatFormat = new WritableCellFormat();
+		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+		
+		String ifMaxFormulaString = "IF(MAX(" + "S" + (anchorRow + 2) + ":" + "S" + (thisRow + 1) + ") >= $F$3, 4, 0";
+		Formula ifMaxFormula = new Formula(24, thisRow, ifMaxFormulaString, floatFormat);
 		sheet1.addCell(ifMaxFormula);
 	}
 
@@ -333,7 +344,7 @@ public class ReadWrite {/**
 		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 
 		String ifMaxFormulaString = "IF(V" + (thisRow + 1) + " = 0, 0, IF(AND(V" + (thisRow + 1) + " = 1, T" + (thisRow + 1) + " >= 0), 1, -1";
-		Formula ifMaxFormula = new Formula(24, thisRow, ifMaxFormulaString, floatFormat);
+		Formula ifMaxFormula = new Formula(25, thisRow, ifMaxFormulaString, floatFormat);
 		sheet1.addCell(ifMaxFormula);
 	}
 
@@ -343,8 +354,8 @@ public class ReadWrite {/**
 		WritableCellFormat floatFormat = new WritableCellFormat ();
 		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 
-		String ifMaxFormulaString = "IF(W" + (thisRow + 1) + " = 0, 0, IF(AND(W" + (thisRow + 1) + " = 2, T" + (thisRow + 1) + " >= MAX(S" + (anchorRow + 2) + ": S" + (thisRow + 1) + ") * D4), 2, -2))";
-		Formula ifMaxFormula = new Formula(25, thisRow, ifMaxFormulaString, floatFormat);
+		String ifMaxFormulaString = "IF(W" + (thisRow + 1) + " = 0, 0, IF(AND(W" + (thisRow + 1) + " = 2, T" + (thisRow + 1) + " >= MAX(S" + (anchorRow + 2) + ": S" + (thisRow + 1) + ") * $D$4), 2, -2))";
+		Formula ifMaxFormula = new Formula(26, thisRow, ifMaxFormulaString, floatFormat);
 		sheet1.addCell(ifMaxFormula);
 	}
 
@@ -354,8 +365,19 @@ public class ReadWrite {/**
 		WritableCellFormat floatFormat = new WritableCellFormat ();
 		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
 
-		String ifMaxFormulaString = "IF(X" + (thisRow + 1) + " = 0, 0, IF(AND(X" + (thisRow + 1) + " = 3, T" + (thisRow + 1) + " >= MAX(S" + (anchorRow + 2) + ": S" + (thisRow + 1) + ") * E4), 3, -3))";
-		Formula ifMaxFormula = new Formula(26, thisRow, ifMaxFormulaString, floatFormat);
+		String ifMaxFormulaString = "IF(X" + (thisRow + 1) + " = 0, 0, IF(AND(X" + (thisRow + 1) + " = 3, T" + (thisRow + 1) + " >= MAX(S" + (anchorRow + 2) + ": S" + (thisRow + 1) + ") * $E$4), 3, -3))";
+		Formula ifMaxFormula = new Formula(27, thisRow, ifMaxFormulaString, floatFormat);
+		sheet1.addCell(ifMaxFormula);
+	}
+	
+	//·À²¨µÌ¸ú×Ù4
+	protected void getPreventWaveTrack4(int thisRow, int anchorRow) throws WriteException, RowsExceededException {
+		// Set cell format IF(X11=0,0,IF(AND(X11=3,T11>=MAX($S$9:S11)*$E$4),3,-3))
+		WritableCellFormat floatFormat = new WritableCellFormat ();
+		floatFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+
+		String ifMaxFormulaString = "IF(Y" + (thisRow + 1) + " = 0, 0, IF(AND(Y" + (thisRow + 1) + " = 4, T" + (thisRow + 1) + " >= MAX(S" + (anchorRow + 2) + ": S" + (thisRow + 1) + ") * $F$4), 4, -4))";
+		Formula ifMaxFormula = new Formula(28, thisRow, ifMaxFormulaString, floatFormat);
 		sheet1.addCell(ifMaxFormula);
 	}
 
@@ -628,9 +650,11 @@ public class ReadWrite {/**
 			getPreventWave1(curFormulaCell.getRow(), anchorRow);
 			getPreventWave2(curFormulaCell.getRow(), anchorRow);
 			getPreventWave3(curFormulaCell.getRow(), anchorRow);
+			getPreventWave4(curFormulaCell.getRow(), anchorRow);
 			getPreventWaveTrack1(curFormulaCell.getRow());
 			getPreventWaveTrack2(curFormulaCell.getRow(), anchorRow);
 			getPreventWaveTrack3(curFormulaCell.getRow(), anchorRow);
+			getPreventWaveTrack4(curFormulaCell.getRow(), anchorRow);
 
 			if (!curFormulaCellString.replaceAll("\\s", "").equals(nextFormulaCellString.replaceAll("\\s", ""))) {
 				log.append("Row "+i+" : current cell: "+curFormulaCell.getContents()+", next cell contents: "+nextFormulaCell.getContents() + newline);
